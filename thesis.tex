@@ -1,0 +1,123 @@
+\documentclass[12pt,a4paper,finnish]{tutthesis}
+
+\usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
+\usepackage[small, labelfont=bf,skip=2pt]{caption}
+\usepackage{times}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{appendix}
+\usepackage{url}
+\usepackage[breaklinks]{hyperref}
+\usepackage{placeins}
+\usepackage{longtable}
+\usepackage{bigstrut}
+\usepackage{multirow}
+\usepackage{subfigure}
+\renewcommand*\lstlistingname{Ohjelma}
+\usepackage{epstopdf}
+\sloppy
+\usepackage[multiple]{footmisc}
+\usepackage{graphicx}
+\graphicspath{{./kuvat/}}
+
+
+% CONST stringit 
+\newcommand{\OTSIKKO}{Diplomityö diplomitöistä diplomitöinä}
+\newcommand{\NIMI}{Teekkari, Teemu}
+\newcommand{\TARKASTAJA}{Prof. Foo Baren}
+
+
+\lstset{
+		captionpos=t, 
+		tabsize=2, 
+		breaklines=true, 
+		basicstyle=\scriptsize, 
+		aboveskip=5pt, belowskip=5pt, 
+		keywordstyle=\bfseries,
+		commentstyle=\ttfamily,
+  	stringstyle=\ttfamily,
+  	showstringspaces=false,
+  	belowcaptionskip = 1pt
+}
+
+\pagenumbering{Roman}
+% alkuvalmistelut loppuu
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\vspace*{-.5cm}\noindent
+\includegraphics[width={8cm}]{logo.eps}
+
+\vspace{6.8cm}
+
+\noindent{\bf\large \textsf{\NIMI}}\\
+{\bf\large \textsf{\OTSIKKO}}\\
+\textsf{Diplomityö}
+
+\vspace{7.7cm} % jos kaksi otsikkoriviä vaihda -> 6.7cm
+
+\begin{flushright}
+  
+\begin{minipage}[c]{6.8cm}
+\begin{spacing}{1.0}
+\textsf{Tarkastaja: \TARKASTAJA}\\
+\textsf{Tarkastaja ja aihe hyväksytty}\\ 
+\textsf{Tieto- ja sähkötekniikan}\\
+\textsf{tiedekuntaneuvoston kokouksessa}\\
+\textsf{z. yyykuuta 201x}\\
+\end{spacing}
+\end{minipage}
+\end{flushright}
+
+\include{tiivistelma_fi}
+\include{tiivistelma_en}
+
+\newpage
+
+\include{alkusanat}
+
+\newpage
+\renewcommand\contentsname{Sisällys} % poista jos kieli muu kuin suomi
+\tableofcontents
+%\newpage
+%\listoffigures
+%\listoftables
+\newpage
+
+\include{lyhenteet}
+
+\newpage
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{}{}}
+\lhead{\fancyplain{}{\leftmark}}
+
+%\renewcommand*\thesection{\arabic{section}.}
+
+% Tästä alkaa varsinainen teksti
+\pagenumbering{arabic}
+
+\include{johdanto}
+\include{tietojarjestelmien_saatavuus}
+\include{fyysinen_infrakstuuri}
+\include{web_sovellus}
+%\include{jarjestelmien_valvonta}
+\include{korkean_saatavuuden_toteutus}
+\include{yhteenveto}
+
+% lähdeluettelo
+\clearpage
+\phantomsection
+\renewcommand{\bibname}{Lähteet} 
+\addcontentsline{toc}{chapter}{Lähteet} % Lisää tämäkin sisällysluetteloon
+% seuraavia voi käyttää bibtex:n kanssa (edellyttää tiedoston kirjat.bib)
+\bibliographystyle{unsrt}
+\bibliography{kirjat}
+
+\appendix
+
+
+%\chapter{Liitteen nimi}
+
+\end{document}
